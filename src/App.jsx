@@ -29,16 +29,16 @@ function App() {
 
 	return (
 		<AppStyle>
-			<Content>
-				<Router>
+			<Router>
+				<Content>
 					<Switch>
-						<Route exact path='/' component={ Home } />
-						<Route exact path='/roadmap' component={ Home } />
-						<Route exact path='/perfil' component={ Perfil } />
+						<Route exact path='/' component={Home} />
+						<Route path='/roadmap' component={Home} />
+						<Route path='/perfil' component={Perfil} />
 					</Switch>
-				</Router>
-				<Menu />
-			</Content>
+					<Menu />
+				</Content>
+			</Router>
 		</AppStyle>
 	);
 }

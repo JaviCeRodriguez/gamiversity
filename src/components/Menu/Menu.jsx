@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import styled from "styled-components";
 import { GiCoffeeMug, GiMountainRoad, GiSettingsKnobs } from 'react-icons/gi';
 
@@ -27,11 +27,9 @@ const Menu = () => {
 
     return(
         <MenuStyle>
-            <Router>
-                <LinkStyle to='/'> <GiCoffeeMug /> </LinkStyle>
-                <LinkStyle to='/roadmap'> <GiMountainRoad /> </LinkStyle>
-                <LinkStyle to='/perfil'> <GiSettingsKnobs /> </LinkStyle>
-            </Router>
+            <LinkStyle to='/'> <GiCoffeeMug /> </LinkStyle>
+            <LinkStyle to='/roadmap'> <GiMountainRoad /> </LinkStyle>
+            <LinkStyle to='/perfil'> <GiSettingsKnobs /> </LinkStyle>
         </MenuStyle>
     );
 };

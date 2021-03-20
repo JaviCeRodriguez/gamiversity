@@ -4,6 +4,7 @@ import {
 	Switch 
 } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Roadmap from "./pages/Roadmap/Roadmap";
 import Perfil from "./pages/Perfil/Perfil";
 import Menu from "./components/Menu/Menu";
 import styled from "styled-components";
@@ -33,7 +34,7 @@ function App() {
 				<Content>
 					<Switch>
 						<Route exact path='/' component={Home} />
-						<Route path='/roadmap' component={Home} />
+						<Route path='/roadmap' component={Roadmap} />
 						<Route path='/perfil' component={Perfil} />
 					</Switch>
 					<Menu />

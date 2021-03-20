@@ -7,11 +7,15 @@ const Home = () => {
     const Main = styled.main`
         background-color: #e4e4e4;
         border-radius: 0.5rem 0 0 0.5rem;
+        font-family: 'Blinker', sans-serif;
         width: 100%;
         height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+        h1 {
+            font-family: 'Mukta Vaani', sans-serif;
+        }
     `
 
     const StyledButton = styled(Button)`
@@ -25,9 +29,7 @@ const Home = () => {
 
     return(
         <Main>
-            <h1 style={{fontFamily: "'Mukta Vaani', sans-serif"}}>
-                Gamiversity - Tu vida estudiantil, como si fuera un juego
-            </h1>
+            <h1>Gamiversity - Tu vida estudiantil, como si fuera un juego</h1>
             <ButtonGroup variant="contained">
                 <StyledButton>Resumen</StyledButton>
                 <StyledButton>Objetivos</StyledButton>

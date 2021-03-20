@@ -19,6 +19,7 @@ const Menu = () => {
     const LinkStyle = styled(Link)`
         font-size: 2rem;
         color: black;
+        padding: 2rem 0.5rem;
         transition-duration: 500ms;
         &:hover {
             color: #FFF;

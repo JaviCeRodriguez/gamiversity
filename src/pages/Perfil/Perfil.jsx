@@ -45,7 +45,7 @@ const Perfil = () => {
     return (
         <Main>
             <Figure>
-                <img src={Foto} />
+                <img src={Foto} alt='Foto' />
             </Figure>
             <DataContainer>
                 <DataWrapper row>

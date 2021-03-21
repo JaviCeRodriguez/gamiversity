@@ -30,7 +30,7 @@ const Perfil = () => {
     const userName = "javo" // Hardcodeado porque no implementé autenticación
 
     const getUser = async () => {
-        db.onSnapshot(snapshot => {
+        db.get().then(snapshot => {
             const userData = snapshot.docs.map(doc => 
                 doc.data().name === userName ?   
                     {

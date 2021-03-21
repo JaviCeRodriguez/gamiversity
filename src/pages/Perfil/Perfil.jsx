@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { GiGlassHeart, GiMeditation, GiDespair } from 'react-icons/gi';
-import { cuenta } from '../../database/cuenta-hardcodeada';
 import { Main, DataContainer, DataWrapper, Figure, StyledButton, Icon } from './Perfil.styled';
 import Foto from '../../assets/img/foto.png';
-import db from '../../lib/firebase';
+import { db } from '../../lib/firebase';
 
 const Perfil = () => {
-    const perfil = cuenta[0]; // TODO: en lugar de un valor numérico fijo, obtener un id de colección
-
     const initialValues = {
         subject: '',
         quarter: '',
@@ -23,29 +20,33 @@ const Perfil = () => {
 
     const handleSumbit = (e) => {
         e.preventDefault();
-
-        perfil.subjects.push(values);
+        // user.subjects.push(values);
+        console.log(values)
         setValues({ ...initialValues });
     }
 
-    const [posts, setPosts] = useState([]);
+    const [user, setUser] = useState([]);
+
+    const userName = "javo" // Hardcodeado porque no implementé autenticación
+
+    const getUser = async () => {
+        db.onSnapshot(snapshot => {
+            const userData = snapshot.docs.map(doc => 
+                doc.data().name === userName ?   
+                    {
+                        id: doc.id,
+                        ...doc.data()
+                    } : ''
+            )
+            setUser(userData);
+        });
+    }
 
     useEffect(() => {
-        // Hook to handle the initial fetching of posts
+        getUser();
+    // eslint-disable-next-line
+    }, [])
     
-        db.collection("usuarios")
-          .orderBy("name", "desc")
-          .get()
-          .then((querySnapshot) => {
-            const data = querySnapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-            }));
-    
-            setPosts(data);
-          });
-      }, []);
-
     return (
         <Main>
             <Figure>
@@ -53,25 +54,17 @@ const Perfil = () => {
             </Figure>
             <DataContainer>
                 <DataWrapper row>
-                    <p><Icon red><GiGlassHeart /></Icon> <label>Vida:</label> {perfil.life}</p>
-                    <p><Icon green><GiMeditation /></Icon> <label>XP:</label> {perfil.exp}</p>
-                    <p><Icon yellow><GiDespair /></Icon> <label>Estrés:</label> {perfil.stress}</p>
+                    <p><Icon red><GiGlassHeart /></Icon> <label>Vida:</label> {user[0].life}</p>
+                    <p><Icon green><GiMeditation /></Icon> <label>XP:</label> {user[0].exp}</p>
+                    <p><Icon yellow><GiDespair /></Icon> <label>Estrés:</label> {user[0].stress}</p>
                 </DataWrapper>
                 <DataWrapper>
-                    <div>
-                        {posts.map((post) => (
-                            <div>
-                                <p>{post.name}</p>
-                                <p>{post.id}</p>
-                            </div>
-                        ))}
-                    </div>
-                    {/* <p><label>Nombre: </label>{perfil.name}</p>
-                    <p><label>Edad: </label>{perfil.age} años</p>
-                    <p><label>Ubicación: </label>{perfil.location}</p>
-                    <p><label>Carrera: </label>{perfil.career}</p>
-                    <p><label>Duración: </label>{perfil.duration} meses</p>
-                    <p><label>Materias: </label>{perfil.subjects.length}</p> */}
+                    <p><label>Nombre: </label>{user[0].name}</p>
+                    <p><label>Edad: </label>{user[0].age} años</p>
+                    <p><label>Ubicación: </label>{user[0].location}</p>
+                    <p><label>Carrera: </label>{user[0].career}</p>
+                    <p><label>Duración: </label>{user[0].duration} meses</p>
+                    <p><label>Materias: </label>{user[0].subjects.length}</p>
                 </DataWrapper>
                 <DataWrapper>
                     <form autoComplete='off' noValidate onSubmit={handleSumbit} >
@@ -96,7 +89,7 @@ const Perfil = () => {
                                 size="small" 
                             />
                         </div>
-                        <StyledButton>Agregar al roadmap</StyledButton>
+                        <StyledButton type='submit'>Agregar al roadmap</StyledButton>
                     </form>
                 </DataWrapper>
             </DataContainer>

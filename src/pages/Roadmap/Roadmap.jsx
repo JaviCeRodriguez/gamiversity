@@ -1,5 +1,5 @@
 import React from 'react';
-import { Main } from './Roadmap.syled';
+import { Main, Icon } from './Roadmap.syled';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,7 +9,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { GiGlassHeart, GiMeditation } from 'react-icons/gi';
+import { MdCancel } from 'react-icons/md';
+import { FaCheckCircle } from 'react-icons/fa';
 
 const Roadmap = (props) => {
     const { user } = props
@@ -26,10 +27,10 @@ const Roadmap = (props) => {
                 <Table size="small" aria-label="Plan de estudio">
                     <TableHead>
                         <TableRow>
-                            <TableCell align="center">Cuatrimeste</TableCell>
-                            <TableCell align="center">Materia</TableCell>
-                            <TableCell align="center">Nota cursada</TableCell>
-                            <TableCell align="center">Apruebó / Recursó</TableCell>
+                            <TableCell align="center"><b>Cuatrimeste</b></TableCell>
+                            <TableCell align="center"><b>Materia</b></TableCell>
+                            <TableCell align="center"><b>Notas cursada</b></TableCell>
+                            <TableCell align="center"><b>Aprobó / Recursó</b></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -39,13 +40,17 @@ const Roadmap = (props) => {
                                     {sub.quarter}
                                 </TableCell>
                                 <TableCell align="center">{sub.subject}</TableCell>
-                                <TableCell align="center">Nota</TableCell>
+                                <TableCell align="center">3, 4, 10</TableCell>
                                 <TableCell align="center">
                                     <FormControlLabel
-                                        control={<Checkbox icon={<GiGlassHeart />} checkedIcon={<GiGlassHeart />} name="checkedH" />}
+                                        control={<Checkbox icon={<Icon><FaCheckCircle /></Icon>} 
+                                        checkedIcon={<Icon checkA ><FaCheckCircle/></Icon>} 
+                                        name="checkedA" />}
                                     />
                                     <FormControlLabel
-                                        control={<Checkbox icon={<GiMeditation />} checkedIcon={<GiMeditation />} name="checkedH" />}
+                                        control={<Checkbox icon={<Icon><MdCancel /></Icon>} 
+                                        checkedIcon={<Icon checkR><MdCancel/></Icon>} 
+                                        name="checkedR" />}
                                     />
                                 </TableCell>
                             </TableRow>

@@ -8,7 +8,6 @@ export const Main = styled.main`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-;
     align-items: center;
     header{
         text-align: center;
@@ -19,4 +18,9 @@ export const Main = styled.main`
             font-weight: 600;
         }
     }
+`
+
+export const Icon = styled.label`
+    color: ${props => props.checkA ? "green" : props.checkR ? "red" : "gray"};
+    font-size: 1.2rem;
 `

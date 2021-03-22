@@ -14,3 +14,10 @@ Gamiversity es el lugar indicado para que puedas gamificar tu vida universitaria
 
 ## Stack del desarrollo
 React.js + Styled Components + Material UI + Firebase
+
+## Backlog
+- [ ] Agregar función para agregar materias
+- [ ] Realizar autentiación de usuario
+- [ ] Diseño responsive
+- [ ] Carga de imagen a un hosting
+- [ ] Generar imagen pixelada automáticamente

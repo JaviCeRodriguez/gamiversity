@@ -40,7 +40,9 @@ const Roadmap = (props) => {
                                     {sub.quarter}
                                 </TableCell>
                                 <TableCell align="center">{sub.subject}</TableCell>
-                                <TableCell align="center">3, 4, 10</TableCell>
+                                <TableCell align="center">
+                                    {sub.finalScore.join(', ')}
+                                </TableCell>
                                 <TableCell align="center">
                                     <FormControlLabel
                                         control={<Checkbox icon={<Icon><FaCheckCircle /></Icon>} 
